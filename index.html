@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Testament Creative</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css?v=4">
+</head>
+
+<body>
+
+  <div class="cursor-glow"></div>
+
+  <header>
+    <img src="logo.svg" alt="Testament Creative Logo" class="logo fade-in">
+  </header>
+
+  <section class="hero fade-in">
+    <h1>Strong brands aren’t accidental — they’re built with purpose.</h1>
+    <p>
+      Too many businesses rely on generic visuals that fail to reflect their identity,
+      personality, and market. At Testament, we create cohesive, powerful brand identities
+      designed to give businesses clarity, direction, and presence from day one.
+    </p>
+    <button>Get in Touch</button>
+  </section>
+
+  <section class="fade-in">
+    <h2>What we do</h2>
+
+    <div class="services">
+      <div>
+        <h3>Design</h3>
+        <p>Strategic visual systems crafted to communicate clearly and confidently.</p>
+      </div>
+
+      <div>
+        <h3>Identity</h3>
+        <p>Distinct brand identities built to stand out and scale with your business.</p>
+      </div>
+
+      <div>
+        <h3>Strategy / Application</h3>
+        <p>Practical brand thinking applied across touchpoints for real-world impact.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fade-in">
+    <h2>About Us</h2>
+    <p>
+      Testament Creative is a West Midlands-based design & branding agency focused on building strong, intentional brands.
+      We work with emerging businesses and sole traders to craft identities
+      that are clear, confident, and built to scale.
+    </p>
+  </section>
+
+  <section class="contact fade-in">
+    <h2>Contact</h2>
+
+    <form>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <textarea placeholder="Tell us about your project"></textarea>
+      <button type="submit">Send Enquiry</button>
+    </form>
+
+    <p>
+      Instagram:
+      <a href="https://instagram.com/testament.creative" target="_blank">
+        @testament.creative
+      </a>
+    </p>
+  </section>
+
+  <script>
+    const elements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    elements.forEach(el => observer.observe(el));
+
+    const glow = document.querySelector('.cursor-glow');
+
+    document.addEventListener('mousemove', (e) => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+  </script>
+
+</body>
+</html>
