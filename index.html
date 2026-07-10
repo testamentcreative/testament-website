@@ -1,118 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Testament Creative</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
+<title>Testament Creative</title>
 
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Alice&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-<div class="cursor-glow"></div>
+<header>
+    <h1>Testament Creative</h1>
+</header>
 
-<img src="logo.png" alt="Testament Creative Logo" class="logo">
-
-<section class="hero fade-in">
-  <h1>Designing brands with clarity, purpose and presence.</h1>
-  <p>We help emerging businesses and established brands create cohesive, professional identities that stand out and scale.</p>
-  <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">
-    Get in Touch
-  </button>
+<section class="hero">
+    <h2>Designing brands with purpose</h2>
 </section>
 
-<section class="fade-in">
-  <h2>What We Do</h2>
+<section class="contact">
 
-  <div class="services">
-    <div>
-      <h3>Design</h3>
-      <p>Logo design and visual assets that form the foundation of your brand.</p>
-    </div>
+    <h2>Get in Touch</h2>
 
-    <div>
-      <h3>Identity</h3>
-      <p>Complete brand systems that ensure consistency across every touchpoint.</p>
-    </div>
+    <form id="contact-form" action="https://submit-form.com/REPLACE_WITH_YOUR_ID" method="POST">
 
-    <div>
-      <h3>Strategy</h3>
-      <p>Positioning, direction and guidance to help your brand grow with clarity.</p>
-    </div>
-  </div>
-</section>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Tell us about your project" required></textarea>
 
-<section id="contact" class="fade-in">
-  <h2>Get in Touch</h2>
+        <button type="submit">Send Enquiry</button>
 
-  <form name="contact" method="POST" data-netlify="true" id="contact-form">
-    <input type="hidden" name="form-name" value="contact">
+    </form>
 
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Tell us about your project" required></textarea>
+    <div id="success-message">Thank you — your enquiry has been sent.</div>
 
-    <button type="submit">Send Enquiry</button>
-  </form>
-
-  <!-- ✅ UPDATED SUCCESS MESSAGE -->
-  <p id="form-success" class="success-message">
-    Thank you — your enquiry has been sent. We’ll be in touch shortly.
-  </p>
-
-  <p>Or email us directly at <a href="mailto:hello@testamentcreative.co.uk">hello@testamentcreative.co.uk</a></p>
 </section>
 
 <script>
-  const faders = document.querySelectorAll('.fade-in');
+const form = document.getElementById('contact-form');
+const successMessage = document.getElementById('success-message');
 
-  const appearOptions = {
-    threshold: 0.2
-  };
-
-  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    });
-  }, appearOptions);
-
-  faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-  });
-
-  const glow = document.querySelector('.cursor-glow');
-
-  document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  });
-
-  // ✅ SUCCESS MESSAGE WITH FADE-IN
-  const form = document.getElementById("contact-form");
-  const successMessage = document.getElementById("form-success");
-
-  form.addEventListener("submit", function(e) {
+form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const formData = new FormData(form);
+    const data = new FormData(form);
 
-    fetch("/", {
-      method: "POST",
-      body: formData
-    })
-    .then(() => {
-      form.reset();
-      successMessage.classList.add("visible");
-    })
-    .catch(() => {
-      alert("Something went wrong. Please try again.");
+    await fetch(form.action, {
+        method: 'POST',
+        body: data
     });
-  });
+
+    form.reset();
+    successMessage.classList.add('show');
+});
 </script>
 
 </body>
