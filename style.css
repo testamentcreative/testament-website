@@ -168,3 +168,17 @@ a:hover {
     font-size: 15px;
   }
 }
+/* SUCCESS MESSAGE */
+
+.success-message {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  margin-top: 15px;
+  color: #7fd6e5;
+}
+
+.success-message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
