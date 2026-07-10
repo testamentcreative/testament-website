@@ -1,104 +1,184 @@
-/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    color: #111;
-    background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #0f2740;
+  color: #ffffff;
+  line-height: 1.7;
+  padding: 40px;
 }
 
-/* Header */
-header {
-    padding: 40px 20px;
-    text-align: center;
+/* LOGO */
+
+.logo {
+  display: block;
+  margin: 0 auto 40px auto;
+  width: 220px;
 }
 
-header h1 {
-    font-family: 'Alice', serif;
-    font-size: 32px;
-    font-weight: 400;
-}
+/* HERO */
 
-/* Hero */
 .hero {
-    padding: 80px 20px;
-    text-align: center;
+  max-width: 700px;
+  margin-bottom: 80px;
 }
 
-.hero h2 {
-    font-size: 24px;
-    font-weight: 300;
+.hero h1 {
+  font-size: 34px;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+  font-family: 'Alice', serif; /* ✅ ADDED */
 }
 
-/* Contact Section */
-.contact {
-    padding: 80px 20px;
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: center;
+.hero p {
+  margin-bottom: 20px;
+  opacity: 0.85;
 }
 
-.contact h2 {
-    margin-bottom: 30px;
-    font-weight: 400;
+/* BUTTONS */
+
+button {
+  background-color: #7fd6e5;
+  color: #0f2740;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.25s ease;
 }
 
-/* Form */
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(127, 214, 229, 0.25);
+}
+
+/* SECTIONS */
+
+section {
+  margin-bottom: 80px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+  font-family: 'Alice', serif; /* ✅ ADDED */
+}
+
+h3 {
+  margin-bottom: 5px;
+  font-family: 'Alice', serif; /* ✅ ADDED */
+}
+
+/* SERVICES */
+
+.services {
+  display: grid;
+  gap: 20px;
+}
+
+.services div {
+  transition: opacity 0.3s ease;
+}
+
+.services div:hover {
+  opacity: 0.85;
+}
+
+.services p {
+  opacity: 0.8;
+}
+
+/* CONTACT FORM */
+
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
 input,
 textarea {
-    padding: 12px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    font-family: 'Inter', sans-serif;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 14px;
+  border-radius: 5px;
+  border: none;
 }
 
-textarea {
-    min-height: 120px;
-    resize: vertical;
+/* LINKS */
+
+a {
+  color: #7fd6e5;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
-button {
-    padding: 12px;
-    border: none;
-    background: #111;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
+a:hover {
+  opacity: 0.7;
 }
 
-button:hover {
-    opacity: 0.8;
+/* SCROLL ANIMATION */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* Messages */
-#success-message,
-#error-message {
-    opacity: 0;
-    margin-top: 20px;
-    font-size: 14px;
-    transition: opacity 0.5s ease;
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-#success-message.show,
-#error-message.show {
-    opacity: 1;
+/* CURSOR GLOW */
+
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(127, 214, 229, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 0;
 }
 
-#success-message {
-    color: green;
+/* MOBILE */
+
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  section {
+    margin-bottom: 60px;
+  }
+
+  input,
+  textarea {
+    font-size: 15px;
+  }
+}
+/* SUCCESS MESSAGE */
+
+.success-message {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  margin-top: 15px;
+  color: #7fd6e5;
 }
 
-#error-message {
-    color: red;
+.success-message.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
