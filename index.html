@@ -25,7 +25,7 @@
 
     <h2>Get in Touch</h2>
 
-    <form id="contact-form" action="https://submit-form.com/enug07Dzq" method="POST">
+    <form id="contact-form" action="https://submit-form.com/REPLACE_WITH_YOUR_ID" method="POST">
 
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
@@ -36,42 +36,25 @@
     </form>
 
     <div id="success-message">Thank you — your enquiry has been sent.</div>
-    <div id="error-message">Something went wrong. Please try again.</div>
 
 </section>
 
 <script>
 const form = document.getElementById('contact-form');
 const successMessage = document.getElementById('success-message');
-const errorMessage = document.getElementById('error-message');
 
 form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    successMessage.classList.remove('show');
-    errorMessage.classList.remove('show');
-
     const data = new FormData(form);
 
-    try {
-        const response = await fetch(form.action, {
-            method: 'POST',
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
+    await fetch(form.action, {
+        method: 'POST',
+        body: data
+    });
 
-        if (response.ok) {
-            form.reset();
-            successMessage.classList.add('show');
-        } else {
-            errorMessage.classList.add('show');
-        }
-
-    } catch (error) {
-        errorMessage.classList.add('show');
-    }
+    form.reset();
+    successMessage.classList.add('show');
 });
 </script>
 
