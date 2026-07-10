@@ -1,115 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Testament Creative | Branding & Design Agency UK</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testament Creative</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
 
-<meta name="description" content="Testament Creative is a UK-based branding and design agency helping businesses build strong, purposeful brand identities that stand out and scale.">
-
-<link rel="stylesheet" href="style.css?v=5">
-<link rel="icon" type="image/png" href="favicon.png">
-
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="cursor-glow"></div>
 
-<header>
-<img src="logo.svg" alt="Testament Creative branding agency logo" class="logo fade-in">
-</header>
+<img src="logo.png" alt="Testament Creative Logo" class="logo">
 
 <section class="hero fade-in">
-<h1>Strong brands aren’t accidental — they’re built with purpose.</h1>
-<p>
-Too many businesses rely on generic visuals that fail to reflect their identity,
-personality, and market. At Testament, we create cohesive, powerful brand identities
-designed to give businesses clarity, direction, and presence from day one.
-</p>
-<button onclick="scrollToContact()">Get in Touch</button>
+  <h1>Designing brands with clarity, purpose and presence.</h1>
+  <p>We help emerging businesses and established brands create cohesive, professional identities that stand out and scale.</p>
+  <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">
+    Get in Touch
+  </button>
 </section>
 
 <section class="fade-in">
-<h2>What we do</h2>
+  <h2>What We Do</h2>
 
-<div class="services">
-<div>
-<h3>Design</h3>
-<p>Strategic visual systems crafted to communicate clearly and confidently.</p>
-</div>
+  <div class="services">
+    <div>
+      <h3>Design</h3>
+      <p>Logo design and visual assets that form the foundation of your brand.</p>
+    </div>
 
-<div>
-<h3>Identity</h3>
-<p>Distinct brand identities built to stand out and scale with your business.</p>
-</div>
+    <div>
+      <h3>Identity</h3>
+      <p>Complete brand systems that ensure consistency across every touchpoint.</p>
+    </div>
 
-<div>
-<h3>Strategy / Application</h3>
-<p>Practical brand thinking applied across touchpoints for real-world impact.</p>
-</div>
-</div>
+    <div>
+      <h3>Strategy</h3>
+      <p>Positioning, direction and guidance to help your brand grow with clarity.</p>
+    </div>
+  </div>
 </section>
 
-<section class="fade-in">
-<h2>About Us</h2>
-<p>
-Testament Creative is a West Midlands-based design & branding agency focused on building strong, intentional brands.
-We work with emerging businesses and sole traders to craft identities
-that are clear, confident, and built to scale.
-</p>
-</section>
+<section id="contact" class="fade-in">
+  <h2>Get in Touch</h2>
 
-<section id="contact" class="contact fade-in">
-<h2>Contact</h2>
+  <!-- ✅ FIXED NETLIFY FORM -->
+  <form name="contact" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="contact">
 
-<form name="contact" method="POST" data-netlify="true" action="/success.html">
-<input type="hidden" name="form-name" value="contact">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Tell us about your project" required></textarea>
 
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" placeholder="Tell us about your project" required></textarea>
+    <button type="submit">Send Enquiry</button>
+  </form>
 
-<button type="submit">Send Enquiry</button>
-</form>
-
-<p>
-Instagram:
-<a href="https://instagram.com/testament.creative" target="_blank" rel="noopener" aria-label="Visit Testament Creative Instagram">
-@testament.creative
-</a>
-</p>
+  <p>Or email us directly at <a href="mailto:hello@testamentcreative.co.uk">hello@testamentcreative.co.uk</a></p>
 </section>
 
 <script>
-// Fade-in on scroll
-const elements = document.querySelectorAll('.fade-in');
+  const faders = document.querySelectorAll('.fade-in');
 
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.classList.add('visible');
-}
-});
-}, { threshold: 0.1 });
+  const appearOptions = {
+    threshold: 0.2
+  };
 
-elements.forEach(el => observer.observe(el));
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
 
-// Cursor glow
-const glow = document.querySelector('.cursor-glow');
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
 
-document.addEventListener('mousemove', (e) => {
-glow.style.left = e.clientX + 'px';
-glow.style.top = e.clientY + 'px';
-});
+  const glow = document.querySelector('.cursor-glow');
 
-// Smooth scroll to contact
-function scrollToContact() {
-document.getElementById('contact').scrollIntoView({
-behavior: 'smooth'
-});
-}
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
 </script>
 
 </body>
