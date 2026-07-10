@@ -31,6 +31,7 @@ body {
   font-size: 34px;
   letter-spacing: -0.5px;
   margin-bottom: 20px;
+  font-family: 'Alice', serif; /* ✅ ADDED */
 }
 
 .hero p {
@@ -65,10 +66,12 @@ section {
 h2 {
   margin-bottom: 20px;
   letter-spacing: -0.3px;
+  font-family: 'Alice', serif; /* ✅ ADDED */
 }
 
 h3 {
   margin-bottom: 5px;
+  font-family: 'Alice', serif; /* ✅ ADDED */
 }
 
 /* SERVICES */
