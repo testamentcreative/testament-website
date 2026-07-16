@@ -18,7 +18,7 @@
 <div class="cursor-glow"></div>
 
 <header>
-<img src="logo.svg" alt="Testament Creative branding agency logo" class="logo fade-in">
+<img src="logo.svg" alt="Testament Creative branding agency logo" class="logo fade-in logo-drop">
 </header>
 
 <section class="hero fade-in">
@@ -64,7 +64,6 @@ that are clear, confident, and built to scale.
 <section id="contact" class="contact fade-in">
 <h2>Contact</h2>
 
-<!-- GitHub Pages compatible (no backend yet) -->
 <form>
 <input type="text" name="name" placeholder="Your Name" required>
 <input type="email" name="email" placeholder="Your Email" required>
@@ -103,7 +102,7 @@ glow.style.left = e.clientX + 'px';
 glow.style.top = e.clientY + 'px';
 });
 
-// Smooth scroll
+// Smooth scroll to contact
 function scrollToContact() {
 document.getElementById('contact').scrollIntoView({
 behavior: 'smooth'
