@@ -17,7 +17,27 @@ body {
 .logo {
   display: block;
   margin: 0 auto 40px auto;
-  width: 220px;
+  width: 420px;
+}
+
+/* Logo drop-in animation */
+
+.logo-drop {
+  animation: logoDrop 0.9s ease-out;
+}
+
+@keyframes logoDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /* HERO */
@@ -163,5 +183,9 @@ a:hover {
   input,
   textarea {
     font-size: 15px;
+  }
+
+  .logo {
+    width: 260px; /* keeps it sensible on mobile */
   }
 }
