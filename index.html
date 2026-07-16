@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Testament Creative | Branding & Design Agency UK</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Testament Creative</title>
-<link rel="stylesheet" href="style.css">
+
+<meta name="description" content="Testament Creative is a UK-based branding and design agency helping businesses build strong, purposeful brand identities that stand out and scale.">
+
+<link rel="stylesheet" href="style.css?v=6">
+<link rel="icon" type="image/png" href="favicon.png">
+
 </head>
 
 <body>
@@ -12,32 +18,59 @@
 <div class="cursor-glow"></div>
 
 <header>
-<div class="logo fade-in">Testament Creative</div>
+<img src="logo.svg" alt="Testament Creative branding agency logo" class="logo fade-in logo-drop">
 </header>
 
-<section class="hero">
-<h1 class="fade-in">Designing brands with purpose</h1>
+<section class="hero fade-in">
+<h1>Strong brands aren’t accidental — they’re built with purpose.</h1>
 
-<p class="fade-in">
-We create strategic, high-impact brand identities that connect, convert, and endure.
+<p><strong>Strategic brand identity for ambitious businesses.</strong></p>
+
+<p>
+We design clear, confident brand identities that give businesses direction,
+consistency, and presence from day one.
 </p>
 
-<p class="fade-in tagline">
-Clarity-led branding for ambitious businesses.
-</p>
-
-<button onclick="scrollToContact()" class="fade-in">Get in Touch</button>
+<button onclick="scrollToContact()">Get in Touch</button>
 </section>
 
-<section id="contact" class="contact">
-<h2 class="fade-in">Get in Touch</h2>
+<section class="fade-in">
+<h2>What we do</h2>
+
+<div class="services">
+<div>
+<h3>Design</h3>
+<p>Strategic visual systems crafted to communicate clearly and confidently.</p>
+</div>
+
+<div>
+<h3>Identity</h3>
+<p>Distinct brand identities built to stand out and scale with your business.</p>
+</div>
+
+<div>
+<h3>Strategy / Application</h3>
+<p>Practical brand thinking applied across touchpoints for real-world impact.</p>
+</div>
+</div>
+</section>
+
+<section class="fade-in">
+<h2>About Us</h2>
+<p>
+Testament Creative is a West Midlands-based design & branding agency focused on building strong, intentional brands.
+We work with emerging businesses and sole traders to craft identities
+that are clear, confident, and built to scale.
+</p>
+</section>
+
+<section id="contact" class="contact fade-in">
+<h2>Contact</h2>
 
 <form action="https://submit-form.com/enug07Dzq" method="POST">
 
 <input type="text" name="name" placeholder="Your Name" required>
-
 <input type="email" name="email" placeholder="Your Email" required>
-
 <textarea name="message" placeholder="Tell us about your project" required></textarea>
 
 <input type="hidden" name="_redirect" value="https://testamentcreative.co.uk?success=true">
@@ -48,11 +81,17 @@ Clarity-led branding for ambitious businesses.
 
 <p id="form-status" style="display:none;"></p>
 
+<p>
+Instagram:
+<a href="https://instagram.com/testament.creative" target="_blank" rel="noopener">
+@testament.creative
+</a>
+</p>
 </section>
 
 <script>
 
-// Fade-in animation
+// Fade-in on scroll
 const elements = document.querySelectorAll('.fade-in');
 
 const observer = new IntersectionObserver(entries => {
@@ -65,7 +104,6 @@ entry.target.classList.add('visible');
 
 elements.forEach(el => observer.observe(el));
 
-
 // Cursor glow
 const glow = document.querySelector('.cursor-glow');
 
@@ -74,14 +112,12 @@ glow.style.left = e.clientX + 'px';
 glow.style.top = e.clientY + 'px';
 });
 
-
-// Scroll to contact
+// Smooth scroll
 function scrollToContact() {
 document.getElementById('contact').scrollIntoView({
 behavior: 'smooth'
 });
 }
-
 
 // Success message via URL
 const params = new URLSearchParams(window.location.search);
