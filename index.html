@@ -8,7 +8,7 @@
 
 <meta name="description" content="Testament Creative is a UK-based branding and design agency helping businesses build strong, purposeful brand identities that stand out and scale.">
 
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 <link rel="icon" type="image/png" href="favicon.png">
 
 </head>
@@ -64,13 +64,15 @@ that are clear, confident, and built to scale.
 <section id="contact" class="contact fade-in">
 <h2>Contact</h2>
 
-<form>
+<form id="contact-form" action="https://submit-form.com/enug07Dzq" method="POST">
 <input type="text" name="name" placeholder="Your Name" required>
 <input type="email" name="email" placeholder="Your Email" required>
 <textarea name="message" placeholder="Tell us about your project" required></textarea>
 
 <button type="submit">Send Enquiry</button>
 </form>
+
+<p id="form-status" style="display:none;">Thank you — your enquiry has been sent.</p>
 
 <p>
 Instagram:
@@ -81,9 +83,8 @@ Instagram:
 </section>
 
 <script>
-// Fade-in on scroll
+// Fade-in
 const elements = document.querySelectorAll('.fade-in');
-
 const observer = new IntersectionObserver(entries => {
 entries.forEach(entry => {
 if (entry.isIntersecting) {
@@ -96,18 +97,47 @@ elements.forEach(el => observer.observe(el));
 
 // Cursor glow
 const glow = document.querySelector('.cursor-glow');
-
 document.addEventListener('mousemove', (e) => {
 glow.style.left = e.clientX + 'px';
 glow.style.top = e.clientY + 'px';
 });
 
-// Smooth scroll to contact
+// Scroll
 function scrollToContact() {
 document.getElementById('contact').scrollIntoView({
 behavior: 'smooth'
 });
 }
+
+// ✅ FORMSPARK HANDLER (corrected)
+const form = document.getElementById("contact-form");
+const status = document.getElementById("form-status");
+
+form.addEventListener("submit", async function(e) {
+e.preventDefault();
+
+const data = new FormData(form);
+
+try {
+const response = await fetch(form.action, {
+method: "POST",
+body: data
+});
+
+if (response.ok) {
+form.reset();
+status.style.display = "block";
+status.textContent = "Thank you — your enquiry has been sent.";
+} else {
+status.style.display = "block";
+status.textContent = "Something went wrong. Please try again.";
+}
+
+} catch (error) {
+status.style.display = "block";
+status.textContent = "Something went wrong. Please try again.";
+}
+});
 </script>
 
 </body>
